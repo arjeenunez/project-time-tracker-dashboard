@@ -82,6 +82,18 @@ main {
     background-color: var(--color-pink-400);
 }
 
+.metric-exercise {
+    background-color: var(--color-green-400);
+}
+
+.metric-social {
+    background-color: var(--color-purple-700);
+}
+
+.metric-self-care {
+    background-color: var(--color-yellow-300);
+}
+
 .metric-img {
     position: absolute;
     right: 16px;
