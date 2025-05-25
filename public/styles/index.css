@@ -1,15 +1,15 @@
 :root {
     --color-purple-600: hsl(246, 80%, 60%);
-    --color-orange-300: hsl(15, 100%, 70%); /* Work */
-    --color-blue-300: hsl(195, 74%, 62%); /* Play */
-    --color-pink-400: hsl(348, 100%, 68%); /* Study*/
-    --color-green-400: hsl(145, 58%, 55%); /* Exercise */
-    --color-purple-700: hsl(264, 64%, 52%); /* Social */
-    --color-yellow-300: hsl(43, 84%, 65%); /* Self care */
-    --color-navy-950: hsl(226, 43%, 10%);
-    --color-navy-900: hsl(235, 46%, 20%);
     --color-purple-500: hsl(235, 45%, 61%);
     --color-navy-200: hsl(236, 100%, 87%);
+    --color-navy-950: hsl(226, 43%, 10%);
+    --color-navy-900: hsl(235, 46%, 20%);
+    --color-work: hsl(15, 100%, 70%); /* Work */
+    --color-play: hsl(195, 74%, 62%); /* Play */
+    --color-study: hsl(348, 100%, 68%); /* Study*/
+    --color-exercise: hsl(145, 58%, 55%); /* Exercise */
+    --color-social: hsl(264, 64%, 52%); /* Social */
+    --color-self-care: hsl(43, 84%, 65%); /* Self care */
 }
 
 * {
@@ -58,7 +58,8 @@ main {
     width: 100%;
     height: 100%;
     max-height: 354px;
-    background-color: var(--color-purple-700);
+    background-color: red;
+    background-color: var(--color-purple-600);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -85,7 +86,7 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    color: white;
+    color: var(--color-purple-500);
     margin: 26px 32px 0 32px;
     max-height: 105px;
     height: 100%;
@@ -96,6 +97,10 @@ ul {
 
 li {
     cursor: pointer;
+}
+
+li:hover {
+    color: white;
 }
 
 .wrapper-img {
@@ -125,30 +130,6 @@ li {
     position: relative;
 }
 
-.metric-work {
-    background-color: var(--color-orange-300);
-}
-
-.metric-play {
-    background-color: var(--color-blue-300);
-}
-
-.metric-study {
-    background-color: var(--color-pink-400);
-}
-
-.metric-exercise {
-    background-color: var(--color-green-400);
-}
-
-.metric-social {
-    background-color: var(--color-purple-700);
-}
-
-.metric-self-care {
-    background-color: var(--color-yellow-300);
-}
-
 .metric-img {
     position: absolute;
     right: 16px;
@@ -162,6 +143,11 @@ li {
     padding: 29px;
     border-radius: 15px 15px 0 0;
     z-index: 1;
+}
+
+.metric-card:hover {
+    background-color: var(--color-purple-500);
+    transition: all ease-in-out 0.3s;
 }
 
 .card-header {
@@ -187,7 +173,7 @@ h3 {
     cursor: pointer;
 }
 
-.ellipsis div {
+.dot {
     width: 4px;
     height: 4px;
     background-color: white;
@@ -204,7 +190,7 @@ h3 {
 
 .card-text {
     font-size: 15px;
-    color: white;
+    color: var(--color-navy-200);
     font-weight: 300;
 }
 
