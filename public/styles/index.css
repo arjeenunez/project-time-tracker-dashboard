@@ -27,10 +27,10 @@ body {
     /* font-weight: 300, 400, 500; */
 }
 
-main {
+.wrapper {
     width: 100%;
     height: 100%;
-    min-height: 100%;
+    max-height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +44,7 @@ main {
     max-height: 518px;
     display: flex;
     flex-flow: row wrap;
+    margin: 24px;
     gap: 30px;
 }
 
@@ -114,14 +115,14 @@ li:hover {
     flex: 10;
     display: flex;
     flex-flow: row wrap;
-    column-gap: 30px;
-    row-gap: 30px;
+    gap: 30px;
 }
 
 .metrics-metric {
     flex: 1;
     background-color: var(--color-navy-900);
     min-width: 254px;
+    min-height: 160px;
     border-radius: 15px;
     overflow: hidden;
     display: flex;
@@ -137,7 +138,7 @@ li:hover {
 
 .metric-card {
     width: 100%;
-    min-height: 199px;
+    max-height: 199px;
     background-color: var(--color-navy-900);
     padding: 29px;
     border-radius: 15px 15px 0 0;
@@ -200,4 +201,78 @@ h3 {
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    main {
+    }
+    .dashboard {
+        gap: 24px;
+    }
+    .dashboard-profile {
+        width: 100%;
+        max-width: 100%;
+        max-height: 203px;
+    }
+
+    .profile-wrapper {
+        max-height: 133px;
+        padding: 24px;
+        flex-direction: row;
+        text-align: left;
+    }
+    .profile-wrapper div {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        margin-left: 20px;
+    }
+    .wrapper-title {
+        font-size: 24px;
+    }
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin: 24px 32px;
+        height: auto;
+    }
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard-metrics {
+        gap: 24px;
+    }
+
+    .metrics-metric {
+        max-height: 160px;
+    }
+
+    .metric-card {
+        max-height: 122px;
+    }
+
+    .card-header {
+        margin-bottom: 8px;
+    }
+
+    .card-text-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-hours {
+        font-size: 32px;
+        padding: 0;
+        margin: 0;
+    }
+    .card-text {
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+    }
 }

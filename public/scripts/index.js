@@ -62,12 +62,16 @@ const createMetric = function (title, currentHours, pastHours, color, iconSrc) {
     cardHeader.append(cardTitle);
     cardHeader.append(ellipsisContainer);
 
+    const cardTextContainer = createContainer('div', 'card-text-container');
+
     const cardHours = createText('h2', currentHours, 'card-hours');
     const cardText = createText('span', pastHours, 'card-text');
 
+    cardTextContainer.append(cardHours);
+    cardTextContainer.append(cardText);
+
     metricCard.append(cardHeader);
-    metricCard.append(cardHours);
-    metricCard.append(cardText);
+    metricCard.append(cardTextContainer);
     metricsMetric.append(metricImg);
     metricsMetric.append(metricCard);
     return metricsMetric;
