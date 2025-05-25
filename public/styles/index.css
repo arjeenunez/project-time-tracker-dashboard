@@ -78,6 +78,10 @@ main {
     background-color: var(--color-blue-300);
 }
 
+.metric-study {
+    background-color: var(--color-pink-400);
+}
+
 .metric-img {
     position: absolute;
     right: 16px;
