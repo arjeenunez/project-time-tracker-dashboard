@@ -111,7 +111,9 @@ const renderData = async function () {
 
     const dashboardProfile = document.querySelector('.dashboard-profile');
     dashboardProfile.addEventListener('click', function (evt) {
+        const links = this.querySelectorAll('.links-link');
         if (evt.target.classList.contains('links-link')) {
+            links.forEach(link => link.classList.toggle('active', link.textContent === evt.target.textContent));
             let duration = evt.target.textContent.toLowerCase();
             loadData(data, duration);
         }

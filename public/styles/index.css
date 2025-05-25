@@ -204,6 +204,10 @@ h3 {
     text-align: center;
 }
 
+.active {
+    color: white;
+}
+
 @media (max-width: 800px) {
     .dashboard {
         gap: 24px;
