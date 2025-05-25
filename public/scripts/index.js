@@ -62,8 +62,8 @@ const createMetric = function (title, currentHours, pastHours, color, iconSrc) {
     cardHeader.append(cardTitle);
     cardHeader.append(ellipsisContainer);
 
-    const cardHours = createText('h2', `${currentHours}hrs`, 'card-hours');
-    const cardText = createText('span', `Last Week - ${pastHours}hrs`, 'card-text');
+    const cardHours = createText('h2', currentHours, 'card-hours');
+    const cardText = createText('span', pastHours, 'card-text');
 
     metricCard.append(cardHeader);
     metricCard.append(cardHours);
@@ -73,15 +73,45 @@ const createMetric = function (title, currentHours, pastHours, color, iconSrc) {
     return metricsMetric;
 };
 
-const renderData = async function () {
-    const data = await getData();
+const hrsText = function (value) {
+    return value === 1 ? 'hr' : 'hrs';
+};
+
+const loadData = function (data, duration = 'daily') {
     const dashboardMetrics = document.querySelector('.dashboard-metrics');
+    dashboardMetrics.innerHTML = '';
+
+    const getPreviousLabel = duration => {
+        if (duration === 'daily') return 'Yesterday - ';
+        if (duration === 'weekly') return 'Last Week - ';
+        if (duration === 'monthly') return 'Last Month - ';
+        return '';
+    };
+
     data.forEach(item => {
-        const foundKey = scheme.find(el => el.key === item.title.toLowerCase());
-        const metric = createMetric(item.title, item.timeframes.weekly.current, item.timeframes.weekly.previous, `var(${foundKey.color})`, foundKey.add);
+        const { title, timeframes } = item;
+        const currentVal = timeframes[duration]?.current ?? 0;
+        const previousVal = timeframes[duration]?.previous ?? 0;
+        const current = `${currentVal}${hrsText(currentVal)}`;
+        const previous = `${getPreviousLabel(duration)}${previousVal}${hrsText(previousVal)}`;
+        const foundKey = scheme.find(el => el.key === title.toLowerCase());
+        if (!foundKey) return;
+        const metric = createMetric(title, current, previous, `var(${foundKey.color})`, foundKey.add);
         dashboardMetrics.append(metric);
     });
-    console.log(data);
+};
+
+const renderData = async function () {
+    const data = await getData();
+    loadData(data);
+
+    const dashboardProfile = document.querySelector('.dashboard-profile');
+    dashboardProfile.addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('links-link')) {
+            let duration = evt.target.textContent.toLowerCase();
+            loadData(data, duration);
+        }
+    });
 };
 
 renderData();
