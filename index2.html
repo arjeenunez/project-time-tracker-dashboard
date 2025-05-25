@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: blue;
+            }
+            .wrapper {
+                width: 100%;
+                height: fit-content;
+                min-height: 100vh;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                background-color: red;
+            }
+            .square {
+                width: 500px;
+                height: 500px;
+                background-color: #3498db;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+    </body>
+</html>
